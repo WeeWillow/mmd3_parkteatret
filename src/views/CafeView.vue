@@ -42,7 +42,7 @@
         <div class="border border-[#A0C298] p-6 flex space-x-6 max-w-6xl mx-auto">
 
           <div class="flex-shrink-0 w-1/3">
-            <img src="/assets/img/cafe-dessert.jpeg" alt="Image description" class="w-full h-auto" />
+            <img src="/assets/img/cafe-dessert.jpeg" alt="Image description" class="w-auto h-100" />
           </div>
 
 
@@ -70,7 +70,7 @@
               <hr class="flex-grow border-t-2 border-gray-300 mx-2" />
               <p class="text-base">30 kr.</p>
             </div>
-            <p class="italic text-sm text-center mt-7">Kom forbi vores dejlig cafe, og se et større udvalg</p>
+            <p class="italic text-sm text-center mt-7">Kom forbi vores dejlige cafe, og se et større udvalg</p>
 
           </div>
         </div>
