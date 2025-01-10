@@ -198,7 +198,7 @@ const toggleShowMore = () => {
     <img 
       class="w-full h-[400px] object-cover order-first md:order-last" 
       src="/assets/img/red-mask.jpg" 
-      alt="Kant performance" 
+      alt="Rød teater maske" 
     >
   </div>
 </section>
