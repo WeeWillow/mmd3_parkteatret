@@ -61,18 +61,18 @@ defineOptions({
 
   <!-- Newsletter Section -->
   <hr class="border-[#A0C298] my-6 max-w-[85rem] mx-auto" />
-  <div class="container p-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center space-y-4 sm:space-y-0 lg:ml-[4rem]">
-    <div class="text-center sm:text-left">
+  <div class="container lg:ml-[4.5rem] flex justify-between">
+    <div class="">
       <h2 class="text-[#BE1522] text-4xl font-semibold mb-2">Nyhedsbrev</h2>
       <p class="text-sm">Tilmeld dig til vores nyhedsbrev, og få det seneste nyt</p>
     </div>
-    <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+    <div class="flex items-center space-x-4 ">
       <input
         type="text"
         placeholder="Skriv din mail"
-        class="px-4 py-2 rounded bg-gray-100 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+        class="px-4 py-2 rounded bg-gray-100 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white"
       />
-      <button class="px-6 py-2 bg-[#A0C298] text-[#12320B] rounded font-semibold hover:bg-[#5C9E4D] focus:ring-2 focus:ring-green-500">
+      <button class="px-6 py-2 bg-[#A0C298] text-[#12320B] rounded font-semibold hover:bg-[#5C9E4D] focus:ring-2 focus:ring-white">
         Tilmeld
       </button>
     </div>
