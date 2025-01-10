@@ -12,7 +12,7 @@ defineOptions({
     <div class="grid grid-cols-5 gap-10">
     
       <div class="flex flex-col ">
-        <img src="@/assets/img/parkteatret-logo.png" alt="Logo" class="w-64 h-auto mb-4" />
+        <img src="/assets/img/parkteatret-logo.png" alt="Logo" class="w-64 h-auto mb-4" />
         <p class=" mb-2">Jernbanegade 41, 3600 Frederikssund</p>
         <p class=" mb-2">Telefon: +45 4738 3435</p>
         <p class="mb-2">Email: info@parkteatret.dk</p>
@@ -48,10 +48,10 @@ defineOptions({
         <h1 class="text-[#BE1522] text-4xl font-semibold mb-4">Socials</h1>
         <div class="flex space-x-4">
           <a href="https://facebook.com" class="text-blue-600 hover:underline">
-            <img src="@/assets/icons/fb-icon.svg" alt="Logo" class="w-10 h-auto mb-4 filter invert brightness-0" />
+            <img src="/assets/icons/fb-icon.svg" alt="Logo" class="w-10 h-auto mb-4 filter invert brightness-0" />
           </a>
           <a href="https://twitter.com" class="text-blue-600 hover:underline">
-            <img src="@/assets/icons/instagram-icon.svg" alt="Logo" class="w-10 h-auto mb-4 filter invert brightness-0" />
+            <img src="/assets/icons/instagram-icon.svg" alt="Logo" class="w-10 h-auto mb-4 filter invert brightness-0" />
           </a>
         </div>
       </div>

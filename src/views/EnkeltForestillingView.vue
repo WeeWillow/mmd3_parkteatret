@@ -2,11 +2,11 @@
 import { ref } from 'vue';
 
 
-import kantImage0 from '@/assets/img/kant0.jpg';
-import kantImage1 from '@/assets/img/kant1.jpg';
-import kantImage2 from '@/assets/img/kant2.jpg';
-import kantImage3 from '@/assets/img/kant3.jpg';
-import kantImage4 from '@/assets/img/kant4.jpg';
+import kantImage0 from '/assets/img/kant0.jpg';
+import kantImage1 from '/assets/img/kant1.jpg';
+import kantImage2 from '/assets/img/kant2.jpg';
+import kantImage3 from '/assets/img/kant3.jpg';
+import kantImage4 from '/assets/img/kant4.jpg';
 
 
 const scrollToSection = () => {
@@ -42,7 +42,7 @@ const changeImage = (newImage) => {
     
     <img 
       class="w-full h-full object-cover" 
-      src="@/assets/img/parkteatret_kant.jpg" 
+      src="/assets/img/parkteatret_kant.jpg" 
       alt="Kant performance" 
     >
 
@@ -54,13 +54,13 @@ const changeImage = (newImage) => {
     <div class="flex flex-wrap gap-4 mb-6"> 
   
   <div class="bg-[#A0C298] bg-white bg-opacity-40 p-4 rounded-xl flex items-center justify-start max-w-max">
-    <img src="@/assets/icons/clock-regular.svg" alt="Logo 1" class="h-5 w-5 mr-4">
+    <img src="/assets/icons/clock-regular.svg" alt="Logo 1" class="h-5 w-5 mr-4">
     <p class="text-sm font-medium">Varighed: 40 min</p>
   </div>
 
   
   <div class="bg-[#A0C298] bg-white bg-opacity-40 p-4 rounded flex items-center justify-start max-w-max">
-    <img src="@/assets/icons/child-solid.svg" alt="Logo 2" class="h-5 w-5 mr-4 ">
+    <img src="/assets/icons/child-solid.svg" alt="Logo 2" class="h-5 w-5 mr-4 ">
     <p class="text-sm font-medium">Alder: 7-12 år</p>
   </div>
 </div>
@@ -68,7 +68,7 @@ const changeImage = (newImage) => {
 
    
     <div class="bg-[#A0C298] bg-white bg-opacity-40 p-4 rounded flex items-center justify-start max-w-max mb-6">
-      <img src="@/assets/icons/calendar-days-regular.svg" alt="Logo 3" class="h-5 w-5 mr-4">
+      <img src="/assets/icons/calendar-days-regular.svg" alt="Logo 3" class="h-5 w-5 mr-4">
       <p class="text-sm font-medium">10 januar - 25 januar 2025</p>
     </div>
 
@@ -95,7 +95,7 @@ const changeImage = (newImage) => {
      
       <div class="relative group flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 
       ">
-        <img src="@/assets/icons/info-solid.svg" alt="Info Icon" class="w-4 h-4 cursor-pointer" @click="scrollToSection">
+        <img src="/assets/icons/info-solid.svg" alt="Info Icon" class="w-4 h-4 cursor-pointer" @click="scrollToSection">
 
         
         <div class="absolute bottom-full mb-2 hidden group-hover:block w-64 bg-black text-white text-sm py-2 px-4 ">
@@ -127,7 +127,7 @@ const changeImage = (newImage) => {
   
   <div class="flex border border-[#A0C298] rounded-md overflow-hidden">
     <div class="bg-[#A0C298] flex items-center justify-center w-12">
-      <img src="@/assets/icons/draw-pen.svg" alt="Logo 1" class="w-6 h-6">
+      <img src="/assets/icons/draw-pen.svg" alt="Logo 1" class="w-6 h-6">
     </div>
     <div class="p-2">
       <p class="text-sm font-semibold leading-tight">Jon Fosse</p>
@@ -138,7 +138,7 @@ const changeImage = (newImage) => {
   
   <div class="flex border border-[#A0C298] rounded-md overflow-hidden">
     <div class="bg-[#A0C298] flex items-center justify-center w-12">
-      <img src="@/assets/icons/file-edit-outline.svg" alt="Logo 2" class="w-6 h-6">
+      <img src="/assets/icons/file-edit-outline.svg" alt="Logo 2" class="w-6 h-6">
     </div>
     <div class="p-2">
       <p class="text-sm font-semibold leading-tight">Jane Rasch</p>
@@ -149,7 +149,7 @@ const changeImage = (newImage) => {
   
   <div class="flex border border-[#A0C298] rounded-md overflow-hidden">
     <div class="bg-[#A0C298] flex items-center justify-center w-12">
-      <img src="@/assets/icons/human-greeting-variant.svg" alt="Logo 3" class="w-6 h-6">
+      <img src="/assets/icons/human-greeting-variant.svg" alt="Logo 3" class="w-6 h-6">
     </div>
     <div class="p-2">
       <p class="text-sm font-semibold leading-tight">Solveig Weinkouff</p>
@@ -160,7 +160,7 @@ const changeImage = (newImage) => {
   
   <div class="flex border border-[#A0C298] rounded-md overflow-hidden">
     <div class="bg-[#A0C298] flex items-center justify-center w-12">
-      <img src="@/assets/icons/masks-theater-solid.svg" alt="Logo 4" class="w-6 h-6">
+      <img src="/assets/icons/masks-theater-solid.svg" alt="Logo 4" class="w-6 h-6">
     </div>
     <div class="p-2">
       <p class="text-sm font-semibold leading-tight">Sofie Pallesen & Anton Hjort Nielsen</p>
@@ -186,17 +186,17 @@ const changeImage = (newImage) => {
       <div class="flex animate-marquee">
        
         <div class="flex">
-          <img src="@/assets/img/Louis-Hansens_Fond_logo_RGB_Sort.svg" alt="Support Logo 1" class="h-16 mx-4">
-          <img src="@/assets/img/unavngivet-3.png" alt="Support Logo 2" class="h-16 mx-4">
-          <img src="@/assets/img/wilhem_hansen_fonden_logo-150.jpg" alt="Support Logo 3" class="h-16 mx-4">
-          <img src="@/assets/img/william_fonden.webp" alt="Support Logo 4" class="h-16 mx-4">
-          <img src="@/assets/img/logo_outline.png" alt="Support Logo 5" class="h-16 mx-4">
+          <img src="/assets/img/Louis-Hansens_Fond_logo_RGB_Sort.svg" alt="Support Logo 1" class="h-16 mx-4">
+          <img src="/assets/img/unavngivet-3.png" alt="Support Logo 2" class="h-16 mx-4">
+          <img src="/assets/img/wilhem_hansen_fonden_logo-150.jpg" alt="Support Logo 3" class="h-16 mx-4">
+          <img src="/assets/img/william_fonden.webp" alt="Support Logo 4" class="h-16 mx-4">
+          <img src="/assets/img/logo_outline.png" alt="Support Logo 5" class="h-16 mx-4">
           
-          <img src="@/assets/img/Louis-Hansens_Fond_logo_RGB_Sort.svg" alt="Support Logo 1" class="h-16 mx-4">
-          <img src="@/assets/img/unavngivet-3.png" alt="Support Logo 2" class="h-16 mx-4">
-          <img src="@/assets/img/wilhem_hansen_fonden_logo-150.jpg" alt="Support Logo 3" class="h-16 mx-4">
-          <img src="@/assets/img/william_fonden.webp" alt="Support Logo 4" class="h-16 mx-4">
-          <img src="@/assets/img/logo_outline.png" alt="Support Logo 5" class="h-16 mx-4">
+          <img src="/assets/img/Louis-Hansens_Fond_logo_RGB_Sort.svg" alt="Support Logo 1" class="h-16 mx-4">
+          <img src="/assets/img/unavngivet-3.png" alt="Support Logo 2" class="h-16 mx-4">
+          <img src="/assets/img/wilhem_hansen_fonden_logo-150.jpg" alt="Support Logo 3" class="h-16 mx-4">
+          <img src="/assets/img/william_fonden.webp" alt="Support Logo 4" class="h-16 mx-4">
+          <img src="/assets/img/logo_outline.png" alt="Support Logo 5" class="h-16 mx-4">
         </div>
       </div>
     </div>
@@ -212,7 +212,7 @@ const changeImage = (newImage) => {
      
       <div class="flex border border-[#A0C298] rounded-md overflow-hidden ">
         <div class="bg-[#A0C298] flex items-center justify-center w-12">
-          <img src="@/assets/icons/draw-pen.svg" alt="Icon 1" class="w-6 h-6">
+          <img src="/assets/icons/draw-pen.svg" alt="Icon 1" class="w-6 h-6">
         </div>
         <div class="p-2">
           <p class="text-sm font-semibold leading-tight">7-14 ÅR</p>
@@ -223,7 +223,7 @@ const changeImage = (newImage) => {
       
       <div class="flex border border-[#A0C298] rounded-md overflow-hidden ">
         <div class="bg-[#A0C298] flex items-center justify-center w-12">
-          <img src="@/assets/icons/file-edit-outline.svg" alt="Icon 2" class="w-6 h-6">
+          <img src="/assets/icons/file-edit-outline.svg" alt="Icon 2" class="w-6 h-6">
         </div>
         <div class="p-2">
           <p class="text-sm font-semibold leading-tight">40 MIN</p>
@@ -237,7 +237,7 @@ const changeImage = (newImage) => {
       
       <div class="flex border border-[#A0C298] rounded-md overflow-hidden ">
         <div class="bg-[#A0C298] flex items-center justify-center w-12">
-          <img src="@/assets/icons/human-greeting-variant.svg" alt="Icon 3" class="w-6 h-6">
+          <img src="/assets/icons/human-greeting-variant.svg" alt="Icon 3" class="w-6 h-6">
         </div>
         <div class="p-2">
           <p class="text-sm font-semibold leading-tight">150 MIN</p>
@@ -248,7 +248,7 @@ const changeImage = (newImage) => {
      
       <div class="flex border border-[#A0C298] rounded-md overflow-hidden">
         <div class="bg-[#A0C298] flex items-center justify-center w-12">
-          <img src="@/assets/icons/masks-theater-solid.svg" alt="Icon 4" class="w-6 h-6">
+          <img src="/assets/icons/masks-theater-solid.svg" alt="Icon 4" class="w-6 h-6">
         </div>
         <div class="p-2">
           <p class="text-sm font-semibold leading-tight">60 MIN</p>
@@ -361,21 +361,21 @@ const changeImage = (newImage) => {
     <div class="grid md:grid-cols-3 gap-8">
      
       <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
-        <img src="@/assets/img/energi.jpg" alt="Energi" class="w-full h-full object-cover">
+        <img src="/assets/img/energi.jpg" alt="Energi" class="w-full h-full object-cover">
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
           <h3 class="font-bold text-center">Energi</h3>
         </div>
       </div>
       
       <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
-        <img src="@/assets/img/animals-2-title-2024.jpg" alt="Animals" class="w-full h-full object-cover">
+        <img src="/assets/img/animals-2-title-2024.jpg" alt="Animals" class="w-full h-full object-cover">
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
           <h3 class="font-bold text-center">Animals</h3>
         </div>
       </div>
      
       <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
-        <img src="@/assets/img/mhxs0464-scaled.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
+        <img src="/assets/img/mhxs0464-scaled.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
           <h3 class="font-bold text-center">Til Ungdommen</h3>
         </div>

@@ -34,14 +34,14 @@
 
 <template>
   <div class="bg-[#F2F2F2]">
-    <div v-if="currentImage" class="grid grid-cols-4 gap-4 h-screen">
+    <div v-if="currentImage" class="grid grid-cols-4 h-screen">
       <!-- Main Hero Section -->
       <div class="col-span-3 relative bg-black text-white" :style="{ height: mainHeight + 'px' }">
         <!-- Main Image -->
         <img :src="currentImage.src" :alt="currentImage.alt" class="w-full h-full object-cover" />
 
         <!-- Box at the bottom of the image -->
-        <div class="absolute bottom-0 left-0 w-1/2 bg-white bg-opacity-80 text-black p-4 rounded-lg mb-4 flex flex-col">
+        <div class="absolute bottom-0 left-0 w-1/2 bg-white bg-opacity-80 text-black p-4  mb-4 flex flex-col">
           <h1 class="text-2xl font-bold mb-2 flex justify-between items-center">
             <span>{{ currentImage.title }}</span>
             <!-- Dynamic Date on the right side -->
@@ -66,7 +66,7 @@
             </div>
 
             <!-- LÆS MERE Button (No overlay) -->
-            <button class="bg-[#A0C298] text-black px-4 py-2 rounded-lg font-semibold">
+            <button class="bg-[#A0C298] text-black px-4 py-2  font-semibold">
               LÆS MERE
             </button>
           </div>
@@ -76,13 +76,13 @@
 
 
       <!-- Sidebar Section -->
-      <div ref="sidebar" class="col-span-1 overflow-y-auto space-y-4 p-2 cursor-pointer">
+      <div ref="sidebar" class="col-span-1 overflow-y-auto  cursor-pointer">
         <div v-for="(image, index) in images" :key="index" :class="[
-          'flex items-center space-x-4 p-2 rounded-lg border transition-transform duration-300 cursor-pointer',
-          currentIndex === index ? 'border-red-500' : 'border-gray-300',
+          'flex items-center space-x-4 p-2 border-4 transition-transform duration-300 cursor-pointer',
+          currentIndex === index ? 'border-red-500' : 'border-white',
         ]" @click="setCurrentImage(index)">
           <!-- Thumbnail -->
-          <img :src="image.thumbnail" :alt="image.alt" class="w-24 h-24 rounded-lg object-cover" />
+          <img :src="image.thumbnail" :alt="image.alt" class="w-24 h-24 object-cover" />
           <!-- Title and Short Description -->
           <div>
             <h2 class="font-semibold text-lg">{{ image.title }}</h2>
@@ -146,7 +146,7 @@
       <section class="relative p-8 mt-[8rem] mb-[6rem]">
         <div class="max-w-20xl mx-auto grid md:grid-cols-2">
           <!-- Image on the left -->
-          <img class="w-full h-[400px] object-cover" src="/assets/img/simone-og-camilla.jpeg" alt="Kant performance">
+          <img class="w-full h-[400px] object-cover" src="/public/assets/img/simone-og-camilla.jpg" alt="Kant performance">
 
           <!-- Text and content on the right inside a box with green outline (no left border) -->
           <div class="relative">
@@ -194,7 +194,7 @@
 
 
       <!-- FAQ -->
-      <div class="w-full max-w-full mx-auto mt-8 bg-white border border-gray-300 rounded-lg p-6 px-10">
+      <div class="w-full max-w-full mx-auto mt-8 bg-white border border-gray-300  p-6 px-10">
         <h1 class="text-red-400 p-4">Ofte stillede spørgsmål</h1>
         <div v-for="(item, index) in faqItems" :key="index" class="border-b border-gray-300">
           <button @click="toggleItem(index)" class="flex justify-between items-center w-full py-4 text-left">
@@ -217,21 +217,21 @@
         <div class="max-w-7xl mx-auto ">
           <div class="grid md:grid-cols-3 gap-8">
             <!-- Card 1 -->
-            <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
+            <div class="relative bg-white shadow-lg  overflow-hidden h-64 cursor-pointer">
               <img src="/assets/img/biograf-entry.jpg" alt="Energi" class="w-full h-full object-cover">
               <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
                 <h3 class="font-bold text-center">Biograf</h3>
               </div>
             </div>
             <!-- Card 2 -->
-            <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
+            <div class="relative bg-white shadow-lg  overflow-hidden h-64 cursor-pointer">
               <img src="/assets/img/forestillinger-entry.png" alt="Animals" class="w-full h-full object-cover">
               <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
                 <h3 class="font-bold text-center">Teatret</h3>
               </div>
             </div>
             <!-- Card 3 -->
-            <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
+            <div class="relative bg-white shadow-lg  overflow-hidden h-64 cursor-pointer">
               <img src="/assets/img/huset-entry.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
               <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
                 <h3 class="font-bold text-center">Huset</h3>
@@ -252,20 +252,20 @@
 import { ref, computed, onMounted, nextTick } from "vue";
 
 // Import for images //
-import kant0 from "@/assets/img/kant0.jpg";
-import kantThumbnail from "@/assets/img/parkteatret_kant.jpg";
-import energi from "@/assets/img/energi.jpg";
-import energiThumb from "@/assets/img/energi-thumb.jpg";
-import schwanzen from "@/assets/img/Schwanzen.jpg";
-import animals from "@/assets/img/animals-2-title-2024.jpg";
-import ungdommen from "@/assets/img/ungdommen.jpg";
-import farfar from "@/assets/img/min-farfars-guitar.jpg";
-import matilda from "@/assets/img/matilda.jpg";
-import vejenHjem from "@/assets/img/vejen-hjem.jpg";
-import niko from "@/assets/img/niko.jpg";
-import paddington from "@/assets/img/paddington.jpg";
-import madam from "@/assets/img/madammelda.jpg";
-import alittlesomething from "@/assets/img/alittlesomething.jpg";
+import kant0 from "/assets/img/kant0.jpg";
+import kantThumbnail from "/assets/img/parkteatret_kant.jpg";
+import energi from "/assets/img/energi.jpg";
+import energiThumb from "/assets/img/energi-thumb.jpg";
+import schwanzen from "/assets/img/Schwanzen.jpg";
+import animals from "/assets/img/animals.jpg";
+import ungdommen from "/assets/img/ungdommen.jpg";
+import farfar from "/assets/img/min-farfars-guitar.jpg";
+import matilda from "/assets/img/matilda.jpg";
+import vejenHjem from "/assets/img/vejen-hjem.jpg";
+import niko from "/assets/img/niko.jpg";
+import paddington from "/assets/img/paddington.jpg";
+import madam from "/assets/img/madammelda.jpg";
+import alittlesomething from "/assets/img/alittlesomething.jpg";
 
 
 
@@ -317,7 +317,7 @@ const images = ref([
     title: "ANIMALS",
     description:
       "I over et halvt århundrede har grisene haft absolut magt i dyrenes samfund og har opbygget et falsk demokratisk system. Et oprør ledet af fårene skaber en trussel mod regeringen. Modsvaret er en systematisk jagt på og endelig tilintetgørelse af oprørerne udført af statens hundepatruljer. ",
-    shortDescription: "Hvad skete der 50 år efter på Dyrenes Gård?... ",
+    shortDescription: "Hvad skete der 50 år efter på Dyrenes Gård? ",
     src: animals, // Replace with a valid image path
     thumbnail: animals, // Replace with a valid thumbnail path
     alt: "Animals image",
@@ -343,7 +343,7 @@ const images = ref([
     description:
       "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i fingrene og ikke smiler mere. Og om Lines savn og undren, indtil hun en dag beslutter at hun vil spille guitaren for ham.",
     shortDescription:
-      "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i fingrene og ikke smiler mere. Og om Lines savn og undren, indtil hun en dag beslutter at hun vil spille guitaren for ham...",
+      "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i...",
     src: farfar, // Replace with a valid image path
     thumbnail: farfar, // Replace with a valid thumbnail path
     alt: "Farfar's guitar image",
