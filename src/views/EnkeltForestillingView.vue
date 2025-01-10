@@ -34,7 +34,7 @@ const changeImage = (newImage) => {
 </script>
 
 <template>
-  <div class="bg-[#FFF8E5] text-gray-800">
+  <div class="bg-[#F2F2F2] text-gray-800">
     <section class="mx-4 sm:mx-8 lg:mx-16">
 
     <section class="relative p-8">

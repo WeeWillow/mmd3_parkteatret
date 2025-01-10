@@ -5,7 +5,7 @@
 
 
 <template>
-  <div class="bg-[#FFF8E5] text-gray-800 min-h-screen">
+  <div class="bg-[#F2F2F2] text-gray-800 min-h-screen">
     <section class="mx-4 sm:mx-8 lg:mx-16">
 
       <div class="flex space-x-10 p-10">
