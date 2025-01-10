@@ -10,7 +10,7 @@ const dropdownVisible = ref({}); // synlighed af desktop dropdown
 const menuItems = ref([
   // ikke-realiserede sider linker til base '/' hvilket er forsiden
   { name: "Forestillinger", link: "/forestillinger", submenu: [] }, //ingen submenu
-  { name: "Teater", link: "/", submenu: [{ name: "Undervisning", link: "/teater/undervisning" }] }, //submenu med ét punkt
+  { name: "Teater", link: "/", submenu: [{ name: "Undervisning", link: "/" }] }, //submenu med ét punkt
   { name: "Biograf", link: "/", submenu: [{ name: "Dagens program", link: "/" }, { name: "Filmklubber", link: "/" }] }, //submenu med to punkter
   { name: "Café", link: "/cafe", submenu: [] }, // ingen submenu
   { name: "Om Huset", link: "/", submenu: [{ name: "Praktisk Info", link: "/" }, { name: "Husets Historie", link: "/" }, { name: "Medarbejdere", link: "/" }] }, //submenu med tre punkter
