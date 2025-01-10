@@ -212,7 +212,7 @@ const toggleShowMore = () => {
       <!-- En router som er bygget på kant kortet, som så leder til vores enkelte forestillinger. Det den gøre er at finde en router med navnet 'enkelteforestillinger, som er i vores index.js som er vores routers' -->
       <router-link 
         v-if="card.title === 'Kant'" 
-        :to="{ name: 'enkelteforestillinger' }" 
+        :to="{ name: 'kant' }" 
         class="block"
       >
         <!-- Bruger den dynamiske måde at fremvise billede og alt tekst-->

@@ -20,8 +20,8 @@ const router = createRouter({
       component: CafeView,
     },
     {
-      path: '/enkelteforestillinger',
-      name: 'enkelteforestillinger',
+      path: '/kant',
+      name: 'kant',
       component: EnkeltForestillingView,
     },
     {
