@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // view imports
 import ForsideView from '@/views/ForsideView.vue'
 import CafeView from '@/views/CafeView.vue'
+import EnkeltForestillingView from '@/views/EnkeltForestillingView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +17,11 @@ const router = createRouter({
       path: '/cafe',
       name: 'cafe',
       component: CafeView,
+    },
+    {
+      path: '/forestillinger',
+      name: 'forestillinger',
+      component: EnkeltForestillingView,
     },
   ],
   // if something has a saved position, it will use it

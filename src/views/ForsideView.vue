@@ -1,36 +1,195 @@
-<style scoped>
-.slide-in {
-  animation: slideIn 0.5s ease-out forwards;
-}
+<script setup>
+import { ref, computed, onMounted, nextTick } from "vue";
 
-.slide-out {
-  animation: slideOut 0.5s ease-in forwards;
-}
+// Import for images //
+import kant0 from "/assets/img/kant0.jpg";
+import kantThumbnail from "/assets/img/parkteatret_kant.jpg";
+import energi from "/assets/img/energi.jpg";
+import energiThumb from "/assets/img/energi-thumb.jpg";
+import schwanzen from "/assets/img/Schwanzen.jpg";
+import animals from "/assets/img/animals.jpg";
+import ungdommen from "/assets/img/ungdommen.jpg";
+import farfar from "/assets/img/min-farfars-guitar.jpg";
+import matilda from "/assets/img/matilda.jpg";
+import vejenHjem from "/assets/img/vejen-hjem.jpg";
+import niko from "/assets/img/niko.jpg";
+import paddington from "/assets/img/paddington.jpg";
+import madam from "/assets/img/madammelda.jpg";
+import alittlesomething from "/assets/img/alittlesomething.jpg";
 
-@keyframes slideIn {
-  0% {
-    transform: translateX(100%);
-    /* Start off the screen to the right */
-  }
 
-  100% {
-    transform: translateX(0);
-    /* End at its normal position */
-  }
-}
 
-@keyframes slideOut {
-  0% {
-    transform: translateX(0);
-    /* Start at its normal position */
-  }
+// Reactive variables
+const currentIndex = ref(0);
+const setCurrentImage = (index) => {
+  currentIndex.value = index;
+};
+const images = ref([
+  {
+    title: "KANT",
+    description:
+      "Kristoffer er ni år, og om aftenen ligger han i sin seng og tænker på det uendelige verdensrum. Han er fascineret og bange på en gang.",
+    shortDescription: "Kristoffer er ni år, og om aftenen ligger han i sin seng og tænker...",
+    src: kant0, // Replace with a valid image path
+    thumbnail: kantThumbnail, // Replace with a valid thumbnail path
+    alt: "KANT image",
+    ageRange: "7-12 ÅR",
+    duration: "40 MIN",
+    date: "10. januar - 25. Januar 2025", // Add this property
+  },
+  {
+    title: "ENERGI",
+    description:
+      "Energi” er ny dansk dramatik skrevet af Anna Skov. Her kommer vi helt tæt på et lokalsamfund og tager diskussionen op om vi skal genoverveje atomenergi som energikilde i Danmark.",
+    shortDescription:
+      "Energi” er ny dansk dramatik skrevet af Anna Skov... ",
+    src: energi, // Replace with a valid image path
+    thumbnail: energiThumb, // Replace with a valid thumbnail path
+    alt: "ENERGI image",
+    ageRange: "8-14 ÅR",
+    duration: "90 MIN",
+    date: "1. marts - 23. marts 2025",
+  },
+  {
+    title: "SCHWANZEN SÄNGER KNABEN",
+    description:
+      "Schwanzen Sänger Knaben er et sofistikeret, lille mandskor, der igennem 28 år har sunget sig ind i hjerterne på godtfolk og sjofle sjæle. Igennem alle årene har de forsøgt at balancere på den knivskarpe grænse mellem pornografi og blasfemi. ",
+    shortDescription:
+      "Schwanzen Sänger Knaben er et sofistikeret, lille mandskor, der igennem 28 år har sunget sig ind... ",
+    src: schwanzen, // Replace with a valid image path
+    thumbnail: schwanzen, // Replace with a valid thumbnail path
+    alt: "schwanzen image",
+    ageRange: "???",
+    duration: "???",
+    date: "13. December 2024",
+  },
+  {
+    title: "ANIMALS",
+    description:
+      "I over et halvt århundrede har grisene haft absolut magt i dyrenes samfund og har opbygget et falsk demokratisk system. Et oprør ledet af fårene skaber en trussel mod regeringen. Modsvaret er en systematisk jagt på og endelig tilintetgørelse af oprørerne udført af statens hundepatruljer. ",
+    shortDescription: "Hvad skete der 50 år efter på Dyrenes Gård? ",
+    src: animals, // Replace with a valid image path
+    thumbnail: animals, // Replace with a valid thumbnail path
+    alt: "Animals image",
+    ageRange: "???",
+    duration: "???",
+    date: "3. Februar 2025",
+  },
+  {
+    title: "TIL UNGDOMMEN",
+    description:
+      "Til ungdommen er skabt ud fra biografiske historier fra teenageres egne liv. Med humor og eftertænksomhed fortæller forestillingen om tiden mellem barndom og voksenliv. Hvor længe er man barn, og hvordan bliver man egentlig voksen? Hvad tænker vennerne? Hvorfor forstår de voksne ikke? Længes vi i virkeligheden alle, på tværs af alder og generationer, efter det samme?",
+    shortDescription:
+      "Til ungdommen er skabt ud fra biografiske historier fra teenageres egne liv...",
+    src: ungdommen, // Replace with a valid image path
+    thumbnail: ungdommen, // Replace with a valid thumbnail path
+    alt: "Til Ungdommen image",
+    ageRange: "???",
+    duration: "80 MIN",
+    date: "23. Januar 2025",
+  },
+  {
+    title: "Min farfars guitar",
+    description:
+      "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i fingrene og ikke smiler mere. Og om Lines savn og undren, indtil hun en dag beslutter at hun vil spille guitaren for ham.",
+    shortDescription:
+      "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i...",
+    src: farfar, // Replace with a valid image path
+    thumbnail: farfar, // Replace with a valid thumbnail path
+    alt: "Farfar's guitar image",
+    ageRange: "3-6 ÅR og +65 ÅR",
+    duration: "25 MIN",
+    date: "16. november 2025 i Frederikssund Kirkes Præstegård, Kirkegade 7",
+  },
+  {
+    title: "Matilda-effekten",
+    description:
+      " Gennem generationer er kvinders videnskabelige arbejde systematisk blevet tilskrevet mandlige forskere. Nyskabt sanselig og poetisk dukke- teaterforestilling for voksne om historiens hidtil oversete videnskabskvinder",
+    shortDescription:
+      "Gennem generationer er kvinders videnskabelige arbejde systematisk blevet tilskrevet mandlige forskere...",
+    src: matilda, // Replace with a valid image path
+    thumbnail: matilda, // Replace with a valid thumbnail path
+    alt: "Matilda-effekten image",
+    ageRange: "???",
+    duration: "70 MIN",
+    date: "Gæstespil - LØRDAG DEN 22. FEBRUAR 2025 16.00",
+  },
+  // Add more images as needed
+]);
 
-  100% {
-    transform: translateX(-100%);
-    /* Move off-screen to the left */
-  }
-}
-</style>
+// Reactive properties
+const currentImage = computed(() => images.value[currentIndex.value] || null);
+const mainHeight = ref(600); // Default height for the main image box
+const sidebar = ref(null); // Ref to sidebar for height calculation
+
+// Method to update main image box height
+const adjustHeight = () => {
+  nextTick(() => {
+    if (sidebar.value) {
+      mainHeight.value = sidebar.value.clientHeight;
+    }
+  });
+};
+
+
+// Ensure height is adjusted on mount and on window resize
+onMounted(() => {
+  adjustHeight(); // Adjust on mount
+  window.addEventListener("resize", adjustHeight); // Adjust on resize
+});
+
+const faqItems = ref([
+  {
+    question: "Hvornår har caféen åben?",
+    answer: "Parkteatrets café, som er drevet af vores beskyttet beskæftigelsestilbud, har åbent alle hverdage fra kl. 10-14. \n\nDerudover holder vi åbent weekender og aftener, hvor vi åbner en halv time før første film/forestilling. Du kan se dagens program her. \n\nEr du i tvivl, om vi har åbent, er du altid velkommen til at ringe til os på tlf.: 47383435 eller skrive til os på Facebook.",
+  },
+  {
+    question: "Kan man spise i caféen?",
+    answer: "Ja! I Parkteatrets café serverer vi foruden et udvalg af lækre kager og drikkelse også varme retter. Vores udvalg varierer, så det er en god idé at bestille på forhånd. \n\nDet kan du gøre ved at ringe til os på tlf.: 4738 3435 eller sende os en besked på Facebook.",
+  },
+  {
+    question: "Hvordan tilmelder jeg mig Parkteatrets nyhedsbrev?",
+    answer: "Nederst på alle vores sider, er footeren,, hvor du kan tilmelde dig, vores nyhedsbrev.",
+  },
+  {
+    question: "Har Parkteatret handicap-faciliteter?",
+    answer: "Det er vigtigt for os, at Parkteatret er tilgængeligt for alle og vi arbejder hele tiden på at skabe bedre handicap-faciliteter. \n\nI 2018 fik vi en handicaprampe ind til salen samt inde i salen. Hvis du skal sidde i kørestol inde i salen, kan du kontakte os på forhånd på tlf.: 4738 3435. Så vil vi afmontere et sæde og gøre plads til dig. \n\nDrejer det sig om teaterbilletter skal du ringe på 4738 33 34 eller skrive en mail til teater@parkteatret.dk \n\nVi har desværre ikke fået et handicaptoilet, men det er muligt at bruge Sillebroens på den anden side af vejen.",
+  },
+  {
+    question: "Hvad betyder det, at Parkteatret har et beskyttet beskæftigelsestilbud??",
+    answer: "I Parkteatret er det vigtigt for os at være med til at skabe ’det gode liv’. At være med til at udvikle byens kulturliv er naturligvis en vigtig del af dette, men det er også vigtigt for os at være arbejdsplads, der byder på både rummelighed og diversitet. \n\nI august 2019 fik vi, med støtte fra Trygfonden, oprettet et beskyttet beskæftigelsestilbud. Tilbuddet varetager caféen og rengøring i hverdagene i dagstimerne og enkelte aftener. Tilbuddet varetages af erfarent socialpædagogisk personale, der støtter medarbejderne i deres arbejdsopgaver, trivsel og udvikling. \n\nMedarbejderne er mennesker med kognitive funktionsnedsættelser, som f.eks. autisme, Down Syndrom, hjerneskader og andre former for handicaps.",
+  },
+  {
+    question: "Hvad gør Parkteatret til noget særligt?",
+    answer: "I Parkteatret brænder vi for at løfte det lokale kulturliv. Vi vil være Frederikssunds kulturelle samlingspunkt og byder derfor på både biograf, teater, café, foredrag, comedy koncerter og andre spændende arrangementer. \n\nVores kulturudbud er baseret på rummelighed og kvalitet, og du kan opleve film fra hele verden. Teatrets forestillinger er alle professionelt produceret og lægger vægt på det lokale og nære. \n\nI Parkteatret lægger vi stor vægt på rummelighed, samarbejde og højt til loftet. Derfor lægger vi gerne hus til lokale samarbejder, og Parkteatrets café er drevet af et beskyttet beskæftigelsestilbud, hvor de ansatte er mennesker med kognitive funktionsnedsættelser.",
+  },
+  {
+    question: "Hvor kan jeg parkere?",
+    answer: "Ankommer du i bil, ligger der en parkeringsplads på Ågade nogle 100 meter bag Parkteatret. Her kan du parkere gratis hele aftenen. \n\nAnkommer du i kørestol? Så kan du parkere lige ved siden af rampen ind til salen. Læs mere om vores handicapfaciliteter her.",
+  },
+]);
+
+const activeIndex = ref(null);
+
+const toggleItem = (index) => {
+  activeIndex.value = activeIndex.value === index ? null : index;
+};
+const mainImage = ref(vejenHjem);
+const imageClass = ref('');
+
+// Method to change the main image with animation
+const changeImage = (newImage) => {
+  // Set the image to 'slide-out' class first
+  imageClass.value = 'slide-out';
+
+  // Wait for the animation to finish, then change the image and apply the 'slide-in' class
+  setTimeout(() => {
+    mainImage.value = newImage;
+    imageClass.value = 'slide-in';
+  }, 500); // Timeout duration matches the slide-out animation duration
+};
+
+</script>
 
 <template>
   <div class="bg-[#F2F2F2]">
@@ -245,201 +404,36 @@
   </div>
 </template>
 
+<style scoped>
+.slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
 
+.slide-out {
+  animation: slideOut 0.5s ease-in forwards;
+}
 
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    /* Start off the screen to the right */
+  }
 
-<script setup>
-import { ref, computed, onMounted, nextTick } from "vue";
+  100% {
+    transform: translateX(0);
+    /* End at its normal position */
+  }
+}
 
-// Import for images //
-import kant0 from "/assets/img/kant0.jpg";
-import kantThumbnail from "/assets/img/parkteatret_kant.jpg";
-import energi from "/assets/img/energi.jpg";
-import energiThumb from "/assets/img/energi-thumb.jpg";
-import schwanzen from "/assets/img/Schwanzen.jpg";
-import animals from "/assets/img/animals.jpg";
-import ungdommen from "/assets/img/ungdommen.jpg";
-import farfar from "/assets/img/min-farfars-guitar.jpg";
-import matilda from "/assets/img/matilda.jpg";
-import vejenHjem from "/assets/img/vejen-hjem.jpg";
-import niko from "/assets/img/niko.jpg";
-import paddington from "/assets/img/paddington.jpg";
-import madam from "/assets/img/madammelda.jpg";
-import alittlesomething from "/assets/img/alittlesomething.jpg";
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    /* Start at its normal position */
+  }
 
-
-
-// Reactive variables
-const currentIndex = ref(0);
-const setCurrentImage = (index) => {
-  currentIndex.value = index;
-};
-const images = ref([
-  {
-    title: "KANT",
-    description:
-      "Kristoffer er ni år, og om aftenen ligger han i sin seng og tænker på det uendelige verdensrum. Han er fascineret og bange på en gang.",
-    shortDescription: "Kristoffer er ni år, og om aftenen ligger han i sin seng og tænker...",
-    src: kant0, // Replace with a valid image path
-    thumbnail: kantThumbnail, // Replace with a valid thumbnail path
-    alt: "KANT image",
-    ageRange: "7-12 ÅR",
-    duration: "40 MIN",
-    date: "10. januar - 25. Januar 2025", // Add this property
-  },
-  {
-    title: "ENERGI",
-    description:
-      "Energi” er ny dansk dramatik skrevet af Anna Skov. Her kommer vi helt tæt på et lokalsamfund og tager diskussionen op om vi skal genoverveje atomenergi som energikilde i Danmark.",
-    shortDescription:
-      "Energi” er ny dansk dramatik skrevet af Anna Skov... ",
-    src: energi, // Replace with a valid image path
-    thumbnail: energiThumb, // Replace with a valid thumbnail path
-    alt: "ENERGI image",
-    ageRange: "8-14 ÅR",
-    duration: "90 MIN",
-    date: "1. marts - 23. marts 2025",
-  },
-  {
-    title: "SCHWANZEN SÄNGER KNABEN",
-    description:
-      "Schwanzen Sänger Knaben er et sofistikeret, lille mandskor, der igennem 28 år har sunget sig ind i hjerterne på godtfolk og sjofle sjæle. Igennem alle årene har de forsøgt at balancere på den knivskarpe grænse mellem pornografi og blasfemi. ",
-    shortDescription:
-      "Schwanzen Sänger Knaben er et sofistikeret, lille mandskor, der igennem 28 år har sunget sig ind... ",
-    src: schwanzen, // Replace with a valid image path
-    thumbnail: schwanzen, // Replace with a valid thumbnail path
-    alt: "schwanzen image",
-    ageRange: "???",
-    duration: "???",
-    date: "13. December 2024",
-  },
-  {
-    title: "ANIMALS",
-    description:
-      "I over et halvt århundrede har grisene haft absolut magt i dyrenes samfund og har opbygget et falsk demokratisk system. Et oprør ledet af fårene skaber en trussel mod regeringen. Modsvaret er en systematisk jagt på og endelig tilintetgørelse af oprørerne udført af statens hundepatruljer. ",
-    shortDescription: "Hvad skete der 50 år efter på Dyrenes Gård? ",
-    src: animals, // Replace with a valid image path
-    thumbnail: animals, // Replace with a valid thumbnail path
-    alt: "Animals image",
-    ageRange: "???",
-    duration: "???",
-    date: "3. Februar 2025",
-  },
-  {
-    title: "TIL UNGDOMMEN",
-    description:
-      "Til ungdommen er skabt ud fra biografiske historier fra teenageres egne liv. Med humor og eftertænksomhed fortæller forestillingen om tiden mellem barndom og voksenliv. Hvor længe er man barn, og hvordan bliver man egentlig voksen? Hvad tænker vennerne? Hvorfor forstår de voksne ikke? Længes vi i virkeligheden alle, på tværs af alder og generationer, efter det samme?",
-    shortDescription:
-      "Til ungdommen er skabt ud fra biografiske historier fra teenageres egne liv...",
-    src: ungdommen, // Replace with a valid image path
-    thumbnail: ungdommen, // Replace with a valid thumbnail path
-    alt: "Til Ungdommen image",
-    ageRange: "???",
-    duration: "80 MIN",
-    date: "23. Januar 2025",
-  },
-  {
-    title: "Min farfars guitar",
-    description:
-      "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i fingrene og ikke smiler mere. Og om Lines savn og undren, indtil hun en dag beslutter at hun vil spille guitaren for ham.",
-    shortDescription:
-      "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i...",
-    src: farfar, // Replace with a valid image path
-    thumbnail: farfar, // Replace with a valid thumbnail path
-    alt: "Farfar's guitar image",
-    ageRange: "3-6 ÅR og +65 ÅR",
-    duration: "25 MIN",
-    date: "16. november 2025 i Frederikssund Kirkes Præstegård, Kirkegade 7",
-  },
-  {
-    title: "Matilda-effekten",
-    description:
-      " Gennem generationer er kvinders videnskabelige arbejde systematisk blevet tilskrevet mandlige forskere. Nyskabt sanselig og poetisk dukke- teaterforestilling for voksne om historiens hidtil oversete videnskabskvinder",
-    shortDescription:
-      "Gennem generationer er kvinders videnskabelige arbejde systematisk blevet tilskrevet mandlige forskere...",
-    src: matilda, // Replace with a valid image path
-    thumbnail: matilda, // Replace with a valid thumbnail path
-    alt: "Matilda-effekten image",
-    ageRange: "???",
-    duration: "70 MIN",
-    date: "Gæstespil - LØRDAG DEN 22. FEBRUAR 2025 16.00",
-  },
-  // Add more images as needed
-]);
-
-// Reactive properties
-const currentImage = computed(() => images.value[currentIndex.value] || null);
-const mainHeight = ref(600); // Default height for the main image box
-const sidebar = ref(null); // Ref to sidebar for height calculation
-
-// Method to update main image box height
-const adjustHeight = () => {
-  nextTick(() => {
-    if (sidebar.value) {
-      mainHeight.value = sidebar.value.clientHeight;
-    }
-  });
-};
-
-
-// Ensure height is adjusted on mount and on window resize
-onMounted(() => {
-  adjustHeight(); // Adjust on mount
-  window.addEventListener("resize", adjustHeight); // Adjust on resize
-});
-
-const faqItems = ref([
-  {
-    question: "Hvornår har caféen åben?",
-    answer: "Parkteatrets café, som er drevet af vores beskyttet beskæftigelsestilbud, har åbent alle hverdage fra kl. 10-14. \n\nDerudover holder vi åbent weekender og aftener, hvor vi åbner en halv time før første film/forestilling. Du kan se dagens program her. \n\nEr du i tvivl, om vi har åbent, er du altid velkommen til at ringe til os på tlf.: 47383435 eller skrive til os på Facebook.",
-  },
-  {
-    question: "Kan man spise i caféen?",
-    answer: "Ja! I Parkteatrets café serverer vi foruden et udvalg af lækre kager og drikkelse også varme retter. Vores udvalg varierer, så det er en god idé at bestille på forhånd. \n\nDet kan du gøre ved at ringe til os på tlf.: 4738 3435 eller sende os en besked på Facebook.",
-  },
-  {
-    question: "Hvordan tilmelder jeg mig Parkteatrets nyhedsbrev?",
-    answer: "Nederst på alle vores sider, er footeren,, hvor du kan tilmelde dig, vores nyhedsbrev.",
-  },
-  {
-    question: "Har Parkteatret handicap-faciliteter?",
-    answer: "Det er vigtigt for os, at Parkteatret er tilgængeligt for alle og vi arbejder hele tiden på at skabe bedre handicap-faciliteter. \n\nI 2018 fik vi en handicaprampe ind til salen samt inde i salen. Hvis du skal sidde i kørestol inde i salen, kan du kontakte os på forhånd på tlf.: 4738 3435. Så vil vi afmontere et sæde og gøre plads til dig. \n\nDrejer det sig om teaterbilletter skal du ringe på 4738 33 34 eller skrive en mail til teater@parkteatret.dk \n\nVi har desværre ikke fået et handicaptoilet, men det er muligt at bruge Sillebroens på den anden side af vejen.",
-  },
-  {
-    question: "Hvad betyder det, at Parkteatret har et beskyttet beskæftigelsestilbud??",
-    answer: "I Parkteatret er det vigtigt for os at være med til at skabe ’det gode liv’. At være med til at udvikle byens kulturliv er naturligvis en vigtig del af dette, men det er også vigtigt for os at være arbejdsplads, der byder på både rummelighed og diversitet. \n\nI august 2019 fik vi, med støtte fra Trygfonden, oprettet et beskyttet beskæftigelsestilbud. Tilbuddet varetager caféen og rengøring i hverdagene i dagstimerne og enkelte aftener. Tilbuddet varetages af erfarent socialpædagogisk personale, der støtter medarbejderne i deres arbejdsopgaver, trivsel og udvikling. \n\nMedarbejderne er mennesker med kognitive funktionsnedsættelser, som f.eks. autisme, Down Syndrom, hjerneskader og andre former for handicaps.",
-  },
-  {
-    question: "Hvad gør Parkteatret til noget særligt?",
-    answer: "I Parkteatret brænder vi for at løfte det lokale kulturliv. Vi vil være Frederikssunds kulturelle samlingspunkt og byder derfor på både biograf, teater, café, foredrag, comedy koncerter og andre spændende arrangementer. \n\nVores kulturudbud er baseret på rummelighed og kvalitet, og du kan opleve film fra hele verden. Teatrets forestillinger er alle professionelt produceret og lægger vægt på det lokale og nære. \n\nI Parkteatret lægger vi stor vægt på rummelighed, samarbejde og højt til loftet. Derfor lægger vi gerne hus til lokale samarbejder, og Parkteatrets café er drevet af et beskyttet beskæftigelsestilbud, hvor de ansatte er mennesker med kognitive funktionsnedsættelser.",
-  },
-  {
-    question: "Hvor kan jeg parkere?",
-    answer: "Ankommer du i bil, ligger der en parkeringsplads på Ågade nogle 100 meter bag Parkteatret. Her kan du parkere gratis hele aftenen. \n\nAnkommer du i kørestol? Så kan du parkere lige ved siden af rampen ind til salen. Læs mere om vores handicapfaciliteter her.",
-  },
-]);
-
-const activeIndex = ref(null);
-
-const toggleItem = (index) => {
-  activeIndex.value = activeIndex.value === index ? null : index;
-};
-const mainImage = ref(vejenHjem);
-const imageClass = ref('');
-
-// Method to change the main image with animation
-const changeImage = (newImage) => {
-  // Set the image to 'slide-out' class first
-  imageClass.value = 'slide-out';
-
-  // Wait for the animation to finish, then change the image and apply the 'slide-in' class
-  setTimeout(() => {
-    mainImage.value = newImage;
-    imageClass.value = 'slide-in';
-  }, 500); // Timeout duration matches the slide-out animation duration
-};
-
-
-
-
-</script>
+  100% {
+    transform: translateX(-100%);
+    /* Move off-screen to the left */
+  }
+}
+</style>

@@ -187,15 +187,15 @@ const changeImage = (newImage) => {
        
         <div class="flex">
           <img src="/assets/img/Louis-Hansens_Fond_logo_RGB_Sort.svg" alt="Support Logo 1" class="h-16 mx-4">
-          <img src="/assets/img/unavngivet-3.png" alt="Support Logo 2" class="h-16 mx-4">
+          <!-- <img src="/assets/img/unavngivet-3.png" alt="Support Logo 2" class="h-16 mx-4"> -->
           <img src="/assets/img/wilhem_hansen_fonden_logo-150.jpg" alt="Support Logo 3" class="h-16 mx-4">
-          <img src="/assets/img/william_fonden.webp" alt="Support Logo 4" class="h-16 mx-4">
+          <!-- <img src="/assets/img/william_fonden.webp" alt="Support Logo 4" class="h-16 mx-4"> -->
           <img src="/assets/img/logo_outline.png" alt="Support Logo 5" class="h-16 mx-4">
           
           <img src="/assets/img/Louis-Hansens_Fond_logo_RGB_Sort.svg" alt="Support Logo 1" class="h-16 mx-4">
-          <img src="/assets/img/unavngivet-3.png" alt="Support Logo 2" class="h-16 mx-4">
+          <!-- <img src="/assets/img/unavngivet-3.png" alt="Support Logo 2" class="h-16 mx-4"> -->
           <img src="/assets/img/wilhem_hansen_fonden_logo-150.jpg" alt="Support Logo 3" class="h-16 mx-4">
-          <img src="/assets/img/william_fonden.webp" alt="Support Logo 4" class="h-16 mx-4">
+          <!-- <img src="/assets/img/william_fonden.webp" alt="Support Logo 4" class="h-16 mx-4"> -->
           <img src="/assets/img/logo_outline.png" alt="Support Logo 5" class="h-16 mx-4">
         </div>
       </div>
@@ -368,14 +368,14 @@ const changeImage = (newImage) => {
       </div>
       
       <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
-        <img src="/assets/img/animals-2-title-2024.jpg" alt="Animals" class="w-full h-full object-cover">
+        <img src="/assets/img/animals.jpg" alt="Animals" class="w-full h-full object-cover">
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
           <h3 class="font-bold text-center">Animals</h3>
         </div>
       </div>
      
       <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
-        <img src="/assets/img/mhxs0464-scaled.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
+        <!-- <img src="/assets/img/mhxs0464-scaled.jpg" alt="Til Ungdommen" class="w-full h-full object-cover"> -->
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
           <h3 class="font-bold text-center">Til Ungdommen</h3>
         </div>
