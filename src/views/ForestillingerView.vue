@@ -221,6 +221,7 @@ const toggleShowMore = () => {
           <h2 class="text-4xl font-semibold mb-4 mt-2">{{ card.title }}</h2>
           <p class="mb-4">{{ card.description }}</p>
           <div class="flex flex-col space-y-4">
+            <!--her så laver vi v-if for at sige hvis det er icon1 og duration så ville den vise den bestemte indhold, hvis en af dem mangler så vil det ikke blive vist noget.-->
             <div 
               v-if="card.icon1 && card.duration" 
               class="border-2 border-[#A0C298] p-4 rounded-xl flex items-center justify-start"

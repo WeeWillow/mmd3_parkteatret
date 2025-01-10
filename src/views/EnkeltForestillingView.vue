@@ -1,14 +1,14 @@
 <script setup>
 import { ref } from 'vue';
 
-
+// importer billeder
 import kantImage0 from '/assets/img/kant0.jpg';
 import kantImage1 from '/assets/img/kant1.jpg';
 import kantImage2 from '/assets/img/kant2.jpg';
 import kantImage3 from '/assets/img/kant3.jpg';
 import kantImage4 from '/assets/img/kant4.jpg';
 
-
+// giver en scroll animation til faq
 const scrollToSection = () => {
   const section = document.getElementById("faq-section");
   if (section) {
@@ -360,23 +360,23 @@ const changeImage = (newImage) => {
     <h2 class="text-2xl font-semibold mb-6">Se vores andre forestillinger</h2>
     <div class="grid md:grid-cols-3 gap-8">
      
-      <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
+      <div class="relative bg-white  overflow-hidden h-64 cursor-pointer">
         <img src="/assets/img/energi.jpg" alt="Energi" class="w-full h-full object-cover">
-        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
+        <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
           <h3 class="font-bold text-center">Energi</h3>
         </div>
       </div>
       
-      <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
+      <div class="relative bg-white  overflow-hidden h-64 cursor-pointer">
         <img src="/assets/img/animals.jpg" alt="Animals" class="w-full h-full object-cover">
-        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
+        <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
           <h3 class="font-bold text-center">Animals</h3>
         </div>
       </div>
      
-      <div class="relative bg-white shadow-lg rounded-lg overflow-hidden h-64 cursor-pointer">
-        <!-- <img src="/assets/img/mhxs0464-scaled.jpg" alt="Til Ungdommen" class="w-full h-full object-cover"> -->
-        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
+      <div class="relative bg-white overflow-hidden h-64 cursor-pointer">
+        <img src="/assets/img/ungdommen.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
+        <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
           <h3 class="font-bold text-center">Til Ungdommen</h3>
         </div>
       </div>

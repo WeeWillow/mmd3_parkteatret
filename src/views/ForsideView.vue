@@ -20,6 +20,7 @@ import alittlesomething from "/assets/img/alittlesomething.jpg";
 
 
 // Reactive variables
+// setcurrentimage kalder en parameter og currentindex opdateres til værdien til det nye
 const currentIndex = ref(0);
 const setCurrentImage = (index) => {
   currentIndex.value = index;
@@ -30,12 +31,12 @@ const images = ref([
     description:
       "Kristoffer er ni år, og om aftenen ligger han i sin seng og tænker på det uendelige verdensrum. Han er fascineret og bange på en gang.",
     shortDescription: "Kristoffer er ni år, og om aftenen ligger han i sin seng og tænker...",
-    src: kant0, // Replace with a valid image path
-    thumbnail: kantThumbnail, // Replace with a valid thumbnail path
+    src: kant0, 
+    thumbnail: kantThumbnail, 
     alt: "KANT image",
     ageRange: "7-12 ÅR",
     duration: "40 MIN",
-    date: "10. januar - 25. Januar 2025", // Add this property
+    date: "10. januar - 25. Januar 2025", 
   },
   {
     title: "ENERGI",
@@ -43,8 +44,8 @@ const images = ref([
       "Energi” er ny dansk dramatik skrevet af Anna Skov. Her kommer vi helt tæt på et lokalsamfund og tager diskussionen op om vi skal genoverveje atomenergi som energikilde i Danmark.",
     shortDescription:
       "Energi” er ny dansk dramatik skrevet af Anna Skov... ",
-    src: energi, // Replace with a valid image path
-    thumbnail: energiThumb, // Replace with a valid thumbnail path
+    src: energi, 
+    thumbnail: energiThumb, 
     alt: "ENERGI image",
     ageRange: "8-14 ÅR",
     duration: "90 MIN",
@@ -56,8 +57,8 @@ const images = ref([
       "Schwanzen Sänger Knaben er et sofistikeret, lille mandskor, der igennem 28 år har sunget sig ind i hjerterne på godtfolk og sjofle sjæle. Igennem alle årene har de forsøgt at balancere på den knivskarpe grænse mellem pornografi og blasfemi. ",
     shortDescription:
       "Schwanzen Sänger Knaben er et sofistikeret, lille mandskor, der igennem 28 år har sunget sig ind... ",
-    src: schwanzen, // Replace with a valid image path
-    thumbnail: schwanzen, // Replace with a valid thumbnail path
+    src: schwanzen, 
+    thumbnail: schwanzen, 
     alt: "schwanzen image",
     ageRange: "???",
     duration: "???",
@@ -68,8 +69,8 @@ const images = ref([
     description:
       "I over et halvt århundrede har grisene haft absolut magt i dyrenes samfund og har opbygget et falsk demokratisk system. Et oprør ledet af fårene skaber en trussel mod regeringen. Modsvaret er en systematisk jagt på og endelig tilintetgørelse af oprørerne udført af statens hundepatruljer. ",
     shortDescription: "Hvad skete der 50 år efter på Dyrenes Gård? ",
-    src: animals, // Replace with a valid image path
-    thumbnail: animals, // Replace with a valid thumbnail path
+    src: animals, 
+    thumbnail: animals, 
     alt: "Animals image",
     ageRange: "???",
     duration: "???",
@@ -81,8 +82,8 @@ const images = ref([
       "Til ungdommen er skabt ud fra biografiske historier fra teenageres egne liv. Med humor og eftertænksomhed fortæller forestillingen om tiden mellem barndom og voksenliv. Hvor længe er man barn, og hvordan bliver man egentlig voksen? Hvad tænker vennerne? Hvorfor forstår de voksne ikke? Længes vi i virkeligheden alle, på tværs af alder og generationer, efter det samme?",
     shortDescription:
       "Til ungdommen er skabt ud fra biografiske historier fra teenageres egne liv...",
-    src: ungdommen, // Replace with a valid image path
-    thumbnail: ungdommen, // Replace with a valid thumbnail path
+    src: ungdommen, 
+    thumbnail: ungdommen, 
     alt: "Til Ungdommen image",
     ageRange: "???",
     duration: "80 MIN",
@@ -94,8 +95,8 @@ const images = ref([
       "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i fingrene og ikke smiler mere. Og om Lines savn og undren, indtil hun en dag beslutter at hun vil spille guitaren for ham.",
     shortDescription:
       "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i...",
-    src: farfar, // Replace with a valid image path
-    thumbnail: farfar, // Replace with a valid thumbnail path
+    src: farfar, 
+    thumbnail: farfar, 
     alt: "Farfar's guitar image",
     ageRange: "3-6 ÅR og +65 ÅR",
     duration: "25 MIN",
@@ -107,22 +108,23 @@ const images = ref([
       " Gennem generationer er kvinders videnskabelige arbejde systematisk blevet tilskrevet mandlige forskere. Nyskabt sanselig og poetisk dukke- teaterforestilling for voksne om historiens hidtil oversete videnskabskvinder",
     shortDescription:
       "Gennem generationer er kvinders videnskabelige arbejde systematisk blevet tilskrevet mandlige forskere...",
-    src: matilda, // Replace with a valid image path
-    thumbnail: matilda, // Replace with a valid thumbnail path
+    src: matilda, 
+    thumbnail: matilda, 
     alt: "Matilda-effekten image",
     ageRange: "???",
     duration: "70 MIN",
     date: "Gæstespil - LØRDAG DEN 22. FEBRUAR 2025 16.00",
   },
-  // Add more images as needed
+  
 ]);
 
 // Reactive properties
 const currentImage = computed(() => images.value[currentIndex.value] || null);
 const mainHeight = ref(600); // Default height for the main image box
-const sidebar = ref(null); // Ref to sidebar for height calculation
+const sidebar = ref(null); // Ref kalkulere højden for sidebaren
 
-// Method to update main image box height
+// Metode at ændre højden på main img, så det hænger sammen med sidebar
+// nextTick søger for at den givne fallback køres efter vue dom er opdateret og det gør så at vi sikre at dom'en er ændret før vi beregner højden
 const adjustHeight = () => {
   nextTick(() => {
     if (sidebar.value) {
@@ -132,10 +134,12 @@ const adjustHeight = () => {
 };
 
 
-// Ensure height is adjusted on mount and on window resize
+// onmount monter komponenterne på dom'en
+// i denne onmount så bliver der kaldt adjustheight for ændre højden med det samme når komponentet bliver kørt
+// resize køre når vinude størrelsen bliver ændret, så ændre den dynamisk
 onMounted(() => {
-  adjustHeight(); // Adjust on mount
-  window.addEventListener("resize", adjustHeight); // Adjust on resize
+  adjustHeight(); 
+  window.addEventListener("resize", adjustHeight); 
 });
 
 const faqItems = ref([
@@ -168,33 +172,36 @@ const faqItems = ref([
     answer: "Ankommer du i bil, ligger der en parkeringsplads på Ågade nogle 100 meter bag Parkteatret. Her kan du parkere gratis hele aftenen. \n\nAnkommer du i kørestol? Så kan du parkere lige ved siden af rampen ind til salen. Læs mere om vores handicapfaciliteter her.",
   },
 ]);
-
+// holder styre på hvilke elementer der er aktuelt
 const activeIndex = ref(null);
-
+// bruger på at skifte et aktiv tilstand på et element
 const toggleItem = (index) => {
   activeIndex.value = activeIndex.value === index ? null : index;
 };
+// her const vi vores mainimg samtidig siger den i starten at det ikke er nogen ekstra tilknyttet til billedet.
 const mainImage = ref(vejenHjem);
 const imageClass = ref('');
 
-// Method to change the main image with animation
+// Method ast ændre main img med
 const changeImage = (newImage) => {
-  // Set the image to 'slide-out' class first
+  // giver animation til slide out
   imageClass.value = 'slide-out';
 
-  // Wait for the animation to finish, then change the image and apply the 'slide-in' class
+  // venter på animation til at være færdig også bliver slide in 
   setTimeout(() => {
     mainImage.value = newImage;
     imageClass.value = 'slide-in';
-  }, 500); // Timeout duration matches the slide-out animation duration
+  }, 500); // længden på timeout
 };
 
 </script>
 
 <template>
   <div class="bg-[#F2F2F2]">
+    <!--Fortæller om at grid layoutet kun vises hvis det er en værdi i currentimage-->
     <div v-if="currentImage" class="grid grid-cols-4 h-screen">
       <!-- Main Hero Section -->
+      <!--her har vi en inline style som laver en dynamisk måde at sætte højden på tilføjes i px-->
       <div class="col-span-3 relative bg-black text-white" :style="{ height: mainHeight + 'px' }">
         <!-- Main Image -->
         <img :src="currentImage.src" :alt="currentImage.alt" class="w-full h-full object-cover" />
@@ -236,8 +243,10 @@ const changeImage = (newImage) => {
 
       <!-- Sidebar Section -->
       <div ref="sidebar" class="col-span-1 overflow-y-auto  cursor-pointer">
+        <!--her er vores sidebar, hvor det er sæt images, som repræsentere liste af de billeder vi har i sidebaren-->
         <div v-for="(image, index) in images" :key="index" :class="[
           'flex items-center space-x-4 p-2 border-4 transition-transform duration-300 cursor-pointer',
+          // Her er funktionen hvor man klikker også skifter den så billede til at blice currentimage ud fra index værdien
           currentIndex === index ? 'border-red-500' : 'border-white',
         ]" @click="setCurrentImage(index)">
           <!-- Thumbnail -->
@@ -376,23 +385,23 @@ const changeImage = (newImage) => {
         <div class="max-w-7xl mx-auto ">
           <div class="grid md:grid-cols-3 gap-8">
             <!-- Card 1 -->
-            <div class="relative bg-white shadow-lg  overflow-hidden h-64 cursor-pointer">
+            <div class="relative bg-white  overflow-hidden h-64 cursor-pointer">
               <img src="/assets/img/biograf-entry.jpg" alt="Energi" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
+              <div class="absolute inset-x-0 bottom-0 bg-blacktext-white px-4 py-2">
                 <h3 class="font-bold text-center">Biograf</h3>
               </div>
             </div>
             <!-- Card 2 -->
-            <div class="relative bg-white shadow-lg  overflow-hidden h-64 cursor-pointer">
+            <div class="relative bg-white   overflow-hidden h-64 cursor-pointer">
               <img src="/assets/img/forestillinger-entry.png" alt="Animals" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
+              <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
                 <h3 class="font-bold text-center">Teatret</h3>
               </div>
             </div>
             <!-- Card 3 -->
-            <div class="relative bg-white shadow-lg  overflow-hidden h-64 cursor-pointer">
+            <div class="relative bg-white   overflow-hidden h-64 cursor-pointer">
               <img src="/assets/img/huset-entry.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
+              <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
                 <h3 class="font-bold text-center">Huset</h3>
               </div>
             </div>
