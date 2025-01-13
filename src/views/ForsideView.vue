@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, nextTick } from "vue";
+import EntryCard from "@/components/UI/EntryCard.vue";
 
 // Import for images //
 import kant0 from "/assets/img/kant0.jpg";
@@ -31,12 +32,12 @@ const images = ref([
     description:
       "Kristoffer er ni år, og om aftenen ligger han i sin seng og tænker på det uendelige verdensrum. Han er fascineret og bange på en gang.",
     shortDescription: "Kristoffer er ni år, og om aftenen ligger han i sin seng og tænker...",
-    src: kant0, 
-    thumbnail: kantThumbnail, 
+    src: kant0,
+    thumbnail: kantThumbnail,
     alt: "KANT image",
     ageRange: "7-12 ÅR",
     duration: "40 MIN",
-    date: "10. januar - 25. Januar 2025", 
+    date: "10. januar - 25. Januar 2025",
   },
   {
     title: "ENERGI",
@@ -44,8 +45,8 @@ const images = ref([
       "Energi” er ny dansk dramatik skrevet af Anna Skov. Her kommer vi helt tæt på et lokalsamfund og tager diskussionen op om vi skal genoverveje atomenergi som energikilde i Danmark.",
     shortDescription:
       "Energi” er ny dansk dramatik skrevet af Anna Skov... ",
-    src: energi, 
-    thumbnail: energiThumb, 
+    src: energi,
+    thumbnail: energiThumb,
     alt: "ENERGI image",
     ageRange: "8-14 ÅR",
     duration: "90 MIN",
@@ -57,8 +58,8 @@ const images = ref([
       "Schwanzen Sänger Knaben er et sofistikeret, lille mandskor, der igennem 28 år har sunget sig ind i hjerterne på godtfolk og sjofle sjæle. Igennem alle årene har de forsøgt at balancere på den knivskarpe grænse mellem pornografi og blasfemi. ",
     shortDescription:
       "Schwanzen Sänger Knaben er et sofistikeret, lille mandskor, der igennem 28 år har sunget sig ind... ",
-    src: schwanzen, 
-    thumbnail: schwanzen, 
+    src: schwanzen,
+    thumbnail: schwanzen,
     alt: "schwanzen image",
     ageRange: "???",
     duration: "???",
@@ -69,8 +70,8 @@ const images = ref([
     description:
       "I over et halvt århundrede har grisene haft absolut magt i dyrenes samfund og har opbygget et falsk demokratisk system. Et oprør ledet af fårene skaber en trussel mod regeringen. Modsvaret er en systematisk jagt på og endelig tilintetgørelse af oprørerne udført af statens hundepatruljer. ",
     shortDescription: "Hvad skete der 50 år efter på Dyrenes Gård? ",
-    src: animals, 
-    thumbnail: animals, 
+    src: animals,
+    thumbnail: animals,
     alt: "Animals image",
     ageRange: "???",
     duration: "???",
@@ -82,8 +83,8 @@ const images = ref([
       "Til ungdommen er skabt ud fra biografiske historier fra teenageres egne liv. Med humor og eftertænksomhed fortæller forestillingen om tiden mellem barndom og voksenliv. Hvor længe er man barn, og hvordan bliver man egentlig voksen? Hvad tænker vennerne? Hvorfor forstår de voksne ikke? Længes vi i virkeligheden alle, på tværs af alder og generationer, efter det samme?",
     shortDescription:
       "Til ungdommen er skabt ud fra biografiske historier fra teenageres egne liv...",
-    src: ungdommen, 
-    thumbnail: ungdommen, 
+    src: ungdommen,
+    thumbnail: ungdommen,
     alt: "Til Ungdommen image",
     ageRange: "???",
     duration: "80 MIN",
@@ -95,8 +96,8 @@ const images = ref([
       "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i fingrene og ikke smiler mere. Og om Lines savn og undren, indtil hun en dag beslutter at hun vil spille guitaren for ham.",
     shortDescription:
       "Om Lines musikalske farfar, der spreder smil og glæde omkring sig, indtil den dag han får gigt i...",
-    src: farfar, 
-    thumbnail: farfar, 
+    src: farfar,
+    thumbnail: farfar,
     alt: "Farfar's guitar image",
     ageRange: "3-6 ÅR og +65 ÅR",
     duration: "25 MIN",
@@ -108,14 +109,14 @@ const images = ref([
       " Gennem generationer er kvinders videnskabelige arbejde systematisk blevet tilskrevet mandlige forskere. Nyskabt sanselig og poetisk dukke- teaterforestilling for voksne om historiens hidtil oversete videnskabskvinder",
     shortDescription:
       "Gennem generationer er kvinders videnskabelige arbejde systematisk blevet tilskrevet mandlige forskere...",
-    src: matilda, 
-    thumbnail: matilda, 
+    src: matilda,
+    thumbnail: matilda,
     alt: "Matilda-effekten image",
     ageRange: "???",
     duration: "70 MIN",
     date: "Gæstespil - LØRDAG DEN 22. FEBRUAR 2025 16.00",
   },
-  
+
 ]);
 
 // Reactive properties
@@ -138,8 +139,8 @@ const adjustHeight = () => {
 // i denne onmount så bliver der kaldt adjustheight for ændre højden med det samme når komponentet bliver kørt
 // resize køre når vinude størrelsen bliver ændret, så ændre den dynamisk
 onMounted(() => {
-  adjustHeight(); 
-  window.addEventListener("resize", adjustHeight); 
+  adjustHeight();
+  window.addEventListener("resize", adjustHeight);
 });
 
 const faqItems = ref([
@@ -197,9 +198,9 @@ const changeImage = (newImage) => {
 </script>
 
 <template>
-  <div class="bg-[#F2F2F2]">
+  <div class="bg-white">
     <!--Fortæller om at grid layoutet kun vises hvis det er en værdi i currentimage-->
-    <div v-if="currentImage" class="grid grid-cols-4 h-screen">
+    <div v-if="currentImage" class="grid grid-cols-4 h-screen bg-white">
       <!-- Main Hero Section -->
       <!--her har vi en inline style som laver en dynamisk måde at sætte højden på tilføjes i px-->
       <div class="col-span-3 relative bg-black text-white" :style="{ height: mainHeight + 'px' }">
@@ -207,7 +208,7 @@ const changeImage = (newImage) => {
         <img :src="currentImage.src" :alt="currentImage.alt" class="w-full h-full object-cover" />
 
         <!-- Box at the bottom of the image -->
-        <div class="absolute bottom-0 left-0 w-1/2 bg-white bg-opacity-80 text-black p-4  mb-4 flex flex-col">
+        <div class="absolute bottom-0 left-0 w-1/2 bg-white text-black p-4 flex flex-col">
           <h1 class="text-2xl font-bold mb-2 flex justify-between items-center">
             <span>{{ currentImage.title }}</span>
             <!-- Dynamic Date on the right side -->
@@ -218,21 +219,21 @@ const changeImage = (newImage) => {
           <!-- Age and Duration Box with Logo -->
           <div class="flex justify-between items-center space-x-4">
             <!-- Age Range Box -->
-            <div class="relative flex items-center space-x-2 bg-[#A0C298] p-2 rounded-md">
-              <div class="absolute inset-0 bg-white bg-opacity-40 rounded-md"></div> <!-- White overlay -->
+            <div class="relative flex items-center space-x-2 bg-[#A0C298] p-2 rounded-full">
+              <div class="absolute inset-0 bg-white bg-opacity-40 rounded-full"></div> <!-- White overlay -->
               <img src="/assets/icons/child-solid.svg" alt="Logo" class="w-4 h-4 z-10" />
-              <span class="text-sm text-gray-600 z-10">{{ currentImage.ageRange }}</span>
+              <span class="text-sm text-[#12320B] z-10">{{ currentImage.ageRange }}</span>
             </div>
 
             <!-- Duration Box -->
-            <div class="relative flex items-center space-x-2 bg-[#A0C298] p-2 rounded-md">
-              <div class="absolute inset-0 bg-white bg-opacity-40 rounded-md"></div> <!-- White overlay -->
-              <img src="/assets/icons/clock-regular.svg" alt="Logo" class="w-4 h-4 z-10" />
-              <span class="text-sm text-gray-600 z-10">{{ currentImage.duration }}</span>
+            <div class="relative flex items-center space-x-2 bg-[#A0C298] p-2 rounded-full">
+              <div class="absolute inset-0 bg-white bg-opacity-40 rounded-full"></div> <!-- White overlay -->
+              <img src="/assets/icons/clock-regular.svg" alt="Logo" class="w-4 h-4 z-10 text-[#BE1522] fill-current" />
+              <span class="text-sm text-[#12320B] z-10">{{ currentImage.duration }}</span>
             </div>
 
             <!-- LÆS MERE Button (No overlay) -->
-            <button class="bg-[#A0C298] text-black px-4 py-2  font-semibold">
+            <button class="bg-[#A0C298] text-black px-4 py-2 font-semibold transition ease-in-out hover:scale-105 hover:text-white">
               LÆS MERE
             </button>
           </div>
@@ -245,9 +246,9 @@ const changeImage = (newImage) => {
       <div ref="sidebar" class="col-span-1 overflow-y-auto  cursor-pointer">
         <!--her er vores sidebar, hvor det er sæt images, som repræsentere liste af de billeder vi har i sidebaren-->
         <div v-for="(image, index) in images" :key="index" :class="[
-          'flex items-center space-x-4 p-2 border-4 transition-transform duration-300 cursor-pointer',
+          'flex items-center space-x-4 p-2 border-4 transition-transform duration-300 cursor-pointer hover:border-[#a0c29880]',
           // Her er funktionen hvor man klikker også skifter den så billede til at blice currentimage ud fra index værdien
-          currentIndex === index ? 'border-red-500' : 'border-white',
+          currentIndex === index ? 'border-[#BE1522]' : 'border-white',
         ]" @click="setCurrentImage(index)">
           <!-- Thumbnail -->
           <img :src="image.thumbnail" :alt="image.alt" class="w-24 h-24 object-cover" />
@@ -269,7 +270,7 @@ const changeImage = (newImage) => {
       <div class="flex justify-between items-start p-6 mt-[8rem]">
         <!-- Left Side: Heading and Paragraphs -->
         <div class="w-1/2 space-y-4">
-          <h1 class="text-3xl font-bold">Velkommen til Parkteatret</h1>
+          <h1 class="text-3xl font-bold text-[#BE1522]">Velkommen til Parkteatret</h1>
           <p class="text-lg w-[500px]">Hos Parkteatret forener vi kunst, film og teater i en unik atmosfære, hvor tradition møder fornyelse. Vores varierede program byder på alt fra gribende teaterforestillinger til de nyeste filmperler – noget for enhver smag.</p>
           <p class="text-lg w-[500px]">Tag også en pause i vores hyggelige café, hvor du kan nyde lækre sandwiches, kolde drikke og snacks, der fuldender din oplevelse.</p>
           <p class="text-lg w-[500px]">Parkteatret er mere end et sted – det er en oplevelse. Vi glæder os til at byde dig velkommen!</p>
@@ -329,7 +330,7 @@ const changeImage = (newImage) => {
               </p>
 
               <!-- Button (Positioned at the bottom right) -->
-              <button class="bg-[#1C1011] text-white py-3 px-8 hover:bg-black-700 absolute bottom-0 right-0">
+              <button class="bg-[#1C1011] text-white py-3 px-8 hover:bg-black-700 absolute bottom-0 right-0 transition ease-in-out hover:bg-[#A0C298] hover:text-black">
                 Læs mere
               </button>
             </div>
@@ -343,7 +344,7 @@ const changeImage = (newImage) => {
 
 
       <section class="mb-10 ms-7">
-        <h2 class="mb-2">I biografen lige nu</h2>
+        <h2 class="mb-2 text-[#BE1522] font-bold text-2xl">I biografen lige nu</h2>
         <div class="flex items-start">
 
           <!-- Main Image -->
@@ -354,7 +355,7 @@ const changeImage = (newImage) => {
           <!-- Smaller Images -->
           <div class="flex flex-col">
             <div v-for="(image, index) in [vejenHjem, niko, paddington, madam, alittlesomething]" :key="index" class="cursor-pointer" @click="changeImage(image)">
-              <img :src="image" alt="Small Image" class="w-[120px] h-[100px] object-cover transition-transform hover:scale-105" />
+              <img :src="image" alt="Small Image" class="w-[120px] h-[100px] object-cover transition-transform hover:scale-105 hover:border-2 hover:border-[#BE1522]" />
             </div>
           </div>
         </div>
@@ -362,52 +363,37 @@ const changeImage = (newImage) => {
 
 
       <!-- FAQ -->
-      <div class="w-full max-w-full mx-auto mt-8 bg-white border border-gray-300  p-6 px-10">
-        <h1 class="text-red-400 p-4">Ofte stillede spørgsmål</h1>
-        <div v-for="(item, index) in faqItems" :key="index" class="border-b border-gray-300">
+      <div class="w-full max-w-full mx-auto mt-8 bg-white border border-[#A0C298]  p-6 px-10">
+        <h1 class="text-red-400 size-full text-2xl">OFTE STILLEDE SPØRGSMÅL</h1>
+        <div v-for="(item, index) in faqItems" :key="index" class="border-b border-[#A0C298]">
           <button @click="toggleItem(index)" class="flex justify-between items-center w-full py-4 text-left">
-            <h2 class="font-medium text-gray-900">{{ item.question }}</h2>
-            <span class="text-gray-500">
-              <svg v-if="activeIndex === index" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <h2 class="text-[#12320B] hover:text-[#BE1522] uppercase">{{ item.question }}</h2>
+            <span class="text-[#1C1011]">
+              <svg v-if="activeIndex === index" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:scale-110 hover:text-[#BE1522]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
               </svg>
-              <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:scale-110 hover:text-[#BE1522]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
               </svg>
             </span>
           </button>
           <div v-show="activeIndex === index" class="overflow-hidden transition-all duration-300">
-            <p class="py-2 text-gray-700" style="white-space: pre-line;">{{ item.answer }}</p>
+            <p class="py-2 text-[#1C1011] text-sm" style="white-space: pre-line;">{{ item.answer }}</p>
           </div>
         </div>
       </div>
-      <section class="ms-7 mt-10 pb-10">
+
+      <!-- entry cards -->
+      <section class=" ms-7 mt-10 pb-10">
         <div class="max-w-7xl mx-auto ">
           <div class="grid md:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="relative bg-white  overflow-hidden h-64 cursor-pointer">
-              <img src="/assets/img/biograf-entry.jpg" alt="Energi" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-blacktext-white px-4 py-2">
-                <h3 class="font-bold text-center">Biograf</h3>
-              </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="relative bg-white   overflow-hidden h-64 cursor-pointer">
-              <img src="/assets/img/forestillinger-entry.png" alt="Animals" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
-                <h3 class="font-bold text-center">Teatret</h3>
-              </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="relative bg-white   overflow-hidden h-64 cursor-pointer">
-              <img src="/assets/img/huset-entry.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
-                <h3 class="font-bold text-center">Huset</h3>
-              </div>
-            </div>
+            <EntryCard imageSrc="/assets/img/biograf-entry.jpg" altText="Energi" title="Biograf" />
+            <EntryCard imageSrc="/assets/img/forestillinger-entry.png" altText="Animals" title="Teatret" />
+            <EntryCard imageSrc="/assets/img/huset-entry.jpg" altText="Til Ungdommen" title="Huset" />
           </div>
         </div>
       </section>
+
     </section>
 
   </div>

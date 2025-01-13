@@ -49,7 +49,7 @@ const toggleDropdown = (index) => {
       <ul class="hidden md:flex space-x-6 items-center" @mouseenter="showDropdown(index)" @mouseleave="hideDropdown(index)">
         <li v-for="(item, index) in menuItems" :key="index" class="relative" @mouseenter="showDropdown(index)" @mouseleave="hideDropdown(index)">
           <!-- dynamisk generering af listepunkter ud fra menuItems -->
-          <router-link :to="item.link" class="flex items-center hover:text-red-500">
+          <router-link :to="item.link" class="flex items-center hover:text-[#BE1522]">
             {{ item.name }}
             <!-- routerlink ud fra menuItems -->
             <i v-if="item.submenu && item.submenu.length > 0" class="mdi mdi-menu-down ml-2"></i>
@@ -57,7 +57,7 @@ const toggleDropdown = (index) => {
           <!-- tjekker om menupunkt er længere end 0 for at vise dropdown ikon dynamiskt -->
           <!-- Dropdown -->
           <ul v-if="dropdownVisible[index]" class="absolute bg-white text-black mt-2 z-10">
-            <li v-for="(subItem, subIndex) in item.submenu" :key="subIndex" class="px-4 py-2 hover:bg-white-600 hover:text-red-500">
+            <li v-for="(subItem, subIndex) in item.submenu" :key="subIndex" class="px-4 py-2 hover:bg-white-600 hover:text-[#BE1522]">
               <router-link :to="subItem.link">{{ subItem.name }}</router-link>
               <!-- viser navn på menupunkter -->
             </li>
@@ -67,14 +67,14 @@ const toggleDropdown = (index) => {
 
       <!-- ikoner til kurv, separator og login -->
       <div class="hidden md:flex items-center space-x-4">
-        <a href="#" class="flex items-center hover:text-red-500">
+        <a href="#" class="flex items-center hover:text-[#BE1522]">
           <i class="mdi mdi-cart-outline text-xl"></i>
           <span class="ml-2">Kurv</span>
         </a>
         <div class="h-6 w-px bg-black"></div>
-        <a href="#" class="flex items-center hover:text-red-500">
+        <a href="#" class="flex items-center hover:text-[#BE1522]">
           <span>Log ind</span>
-          <i class="mdi mdi-arrow-right ml-2 text-green-400 hover:text-red-500"></i>
+          <i class="mdi mdi-arrow-right ml-2 text-green-400 hover:text-[#BE1522]"></i>
         </a>
       </div>
 
@@ -91,7 +91,7 @@ const toggleDropdown = (index) => {
       <ul class="space-y-4 p-4">
         <li v-for="(item, index) in menuItems" :key="index" class="relative group">
           <!-- klikbart element til nav -->
-          <a href="#" class="flex items-center justify-between hover:text-red-500" @click="toggleDropdown(index)">
+          <a href="#" class="flex items-center justify-between hover:text-[#BE1522]" @click="toggleDropdown(index)">
             <span>{{ item.name }}</span>
             <!-- viser pilikon hvis den har submenu -->
             <i v-if="item.submenu && item.submenu.length > 0" :class="mobileDropdownIndex === index ? 'mdi mdi-menu-up' : 'mdi mdi-menu-down'" class="ml-2"></i>
@@ -107,11 +107,11 @@ const toggleDropdown = (index) => {
       </ul>
       <!-- Basket and Login -->
       <div class="p-4 flex items-center justify-between space-x-4">
-        <a href="#" class="flex items-center hover:text-red-500">
+        <a href="#" class="flex items-center hover:text-[#BE1522]">
           <i class="mdi mdi-cart-outline text-xl"></i>
           <span class="ml-2">Kurv</span>
         </a>
-        <a href="#" class="flex items-center hover:text-red-500">
+        <a href="#" class="flex items-center hover:text-[#BE1522]">
           <span>Log ind</span>
           <i class="mdi mdi-arrow-right ml-2"></i>
         </a>

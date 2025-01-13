@@ -1,5 +1,5 @@
 <script setup>
-
+import EntryCard from '@/components/UI/EntryCard.vue';
 
 </script>
 
@@ -84,26 +84,11 @@
         <div class="max-w-7xl mx-auto ">
           <div class="grid md:grid-cols-3 gap-8">
 
-            <div class="relative overflow-hidden h-64 cursor-pointer">
-              <img src="/assets/img/biograf-entry.jpg" alt="Energi" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-black  text-white  px-4 py-2">
-                <h3 class="font-bold text-center">Biograf</h3>
-              </div>
-            </div>
+            <!-- entry cards -->
+            <EntryCard imageSrc="/assets/img/biograf-entry.jpg" altText="Energi" title="Biograf" />
+            <EntryCard imageSrc="/assets/img/forestillinger-entry.png" altText="Animals" title="Teatret" />
+            <EntryCard imageSrc="/assets/img/huset-entry.jpg" altText="Til Ungdommen" title="Huset" />
 
-            <div class="relative overflow-hidden h-64 cursor-pointer">
-              <img src="/assets/img/forestillinger-entry.png" alt="Animals" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-black  text-white px-4 py-2">
-                <h3 class="font-bold text-center">Teatret</h3>
-              </div>
-            </div>
-
-            <div class="relative bg-white  overflow-hidden h-64 cursor-pointer">
-              <img src="/assets/img/huset-entry.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 bg-black  text-white px-4 py-2">
-                <h3 class="font-bold text-center">Huset</h3>
-              </div>
-            </div>
           </div>
         </div>
       </section>

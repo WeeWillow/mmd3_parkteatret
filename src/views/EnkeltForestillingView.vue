@@ -360,21 +360,21 @@ const changeImage = (newImage) => {
     <h2 class="text-2xl font-semibold mb-6">Se vores andre forestillinger</h2>
     <div class="grid md:grid-cols-3 gap-8">
      
-      <div class="relative bg-white  overflow-hidden h-64 cursor-pointer">
+      <div class="relative bg-white  overflow-hidden h-64 cursor-pointer  transition hover:scale-105">
         <img src="/assets/img/energi.jpg" alt="Energi" class="w-full h-full object-cover">
         <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
           <h3 class="font-bold text-center">Energi</h3>
         </div>
       </div>
       
-      <div class="relative bg-white  overflow-hidden h-64 cursor-pointer">
+      <div class="relative bg-white  overflow-hidden h-64 cursor-pointer  transition hover:scale-105">
         <img src="/assets/img/animals.jpg" alt="Animals" class="w-full h-full object-cover">
         <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
           <h3 class="font-bold text-center">Animals</h3>
         </div>
       </div>
      
-      <div class="relative bg-white overflow-hidden h-64 cursor-pointer">
+      <div class="relative bg-white overflow-hidden h-64 cursor-pointer  transition hover:scale-105">
         <img src="/assets/img/ungdommen.jpg" alt="Til Ungdommen" class="w-full h-full object-cover">
         <div class="absolute inset-x-0 bottom-0 bg-black text-white px-4 py-2">
           <h3 class="font-bold text-center">Til Ungdommen</h3>
